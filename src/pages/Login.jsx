@@ -1,4 +1,6 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -10,6 +12,7 @@ function Login() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const emailIsValid = emailRegex.test(email);
     const passwordIsValid = password.length > minPasswordLength;
+
     if (emailIsValid && passwordIsValid) {
       setDisabled(false);
     } else {
@@ -29,10 +32,6 @@ function Login() {
     setPassword(target.value);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
-
   return (
     <form>
       <label htmlFor="email">
@@ -43,7 +42,9 @@ function Login() {
         password
         <input type="password" id="password" value={password} onChange={handlePassword} />
       </label>
-      <button type="button" disabled={disabled} onClick={handleSubmit}>Login</button>
+      <Link to="/products">
+        <button type="button" disabled={disabled}>Login</button>
+      </Link>
     </form>
   );
 }
