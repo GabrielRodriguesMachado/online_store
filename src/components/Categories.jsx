@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { getCategories } from '../services/api';
 
-function Categories() {
+function Categories({ getProducts }) {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     getCategories().then((data) => setCategories(data));
   }, []);
-
-  const teste = (id) => {
-    console.log(id);
-  };
 
   return (
     <div>
@@ -19,7 +16,7 @@ function Categories() {
         <ul>
           {categories.map((category) => (
             <li key={category.id}>
-              <button type="button" onClick={() => teste(category.id)}>
+              <button type="button" onClick={() => getProducts(category.id)}>
                 {category.name}
               </button>
             </li>
@@ -29,5 +26,9 @@ function Categories() {
     </div>
   );
 }
+
+Categories.propTypes = {
+  getProducts: PropTypes.func.isRequired,
+};
 
 export default Categories;
