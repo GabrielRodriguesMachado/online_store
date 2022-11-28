@@ -17,3 +17,8 @@ export const getProductsFromId = (productId) => {
   const url = `https://api.mercadolibre.com/items/${productId}`;
   return fetch(url).then((response) => response.json());
 };
+
+export const getProductsFromIdDescription = (productId) => {
+  const url = `https://api.mercadolibre.com/items/${productId}/description`;
+  return fetch(url).then((response) => response.json());
+};

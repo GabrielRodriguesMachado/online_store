@@ -1,16 +1,19 @@
 import React from 'react';
 import { array } from 'prop-types';
+import { Link } from 'react-router-dom';
 
 function ListItens({ products }) {
   return (
     <div>
       <ul>
         {products.map((product) => (
-          <li key={product.id}>
-            <h3>{product.title}</h3>
-            <img src={product.thumbnail} alt={product.title} />
-            <p>{product.price}</p>
-          </li>
+          <Link key={product.id} to={`/product_details/${product.id}`}>
+            <li>
+              <h3>{product.title}</h3>
+              <img src={product.thumbnail} alt={product.title} />
+              <p>{product.price}</p>
+            </li>
+          </Link>
         ))}
       </ul>
     </div>

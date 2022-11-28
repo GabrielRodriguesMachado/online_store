@@ -10,7 +10,7 @@ function Categories({ getProducts }) {
   }, []);
 
   return (
-    <div>
+    <div className="hidden md:flex">
       <aside>
         <h2>Categorias</h2>
         <ul>
