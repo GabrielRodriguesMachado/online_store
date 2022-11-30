@@ -4,18 +4,20 @@ import { Link } from 'react-router-dom';
 
 function ListItens({ products }) {
   return (
-    <div>
-      <ul>
+    <div className="grid place-items-center min-h-screen w-full">
+      <div className="grid p-4 max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-5">
         {products.map((product) => (
-          <Link key={product.id} to={`/product_details/${product.id}`}>
-            <li>
-              <h3>{product.title}</h3>
-              <img src={product.thumbnail} alt={product.title} />
-              <p>{product.price}</p>
-            </li>
-          </Link>
+          <div className="h-max-w-sm rounded overflow-hidden shadow-lg">
+            <Link key={product.id} to={`/product_details/${product.id}`}>
+              <img className="w-full" src={product.thumbnail} alt={product.title} />
+              <div>
+                <h3 className="font-bold text-xl mb-2">{product.title}</h3>
+                <p className="text-base">{product.price}</p>
+              </div>
+            </Link>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

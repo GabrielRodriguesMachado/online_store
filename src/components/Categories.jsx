@@ -10,18 +10,16 @@ function Categories({ getProducts }) {
   }, []);
 
   return (
-    <div className="hidden md:flex">
+    <div className="hidden md:flex min-w-max m-4">
       <aside>
-        <h2>Categorias</h2>
-        <ul>
-          {categories.map((category) => (
-            <li key={category.id}>
-              <button type="button" onClick={() => getProducts(category.id)}>
-                {category.name}
-              </button>
-            </li>
-          ))}
-        </ul>
+        <h2 className="font-bold">Categorias</h2>
+        {categories.map((category) => (
+          <div className="m-1" key={category.id}>
+            <button type="button" onClick={() => getProducts(category.id)}>
+              {category.name}
+            </button>
+          </div>
+        ))}
       </aside>
     </div>
   );
